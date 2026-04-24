@@ -1,16 +1,14 @@
 import streamlit as st
 import base64
 
-# ── CHANGED: Light purple/teal/white theme replacing dark theme ──────────────
-# Shared Plotly theme applied to every chart
 LAYOUT = dict(
-    paper_bgcolor="rgba(6,148,148, 0.0)",          # CHANGED: was #131929 (dark) → pure white
-    plot_bgcolor="rgba(6,148,148, 0.0.0)",           # CHANGED: was #131929 (dark) → soft white
-    font=dict(color="#1E2235", size=12),    # CHANGED: was #c8d6e8 → charcoal text
-    xaxis=dict(gridcolor="#D0D8F0", tickfont=dict(color="#5A6480")),   # CHANGED: was #1e2d42 / #8899aa
-    yaxis=dict(gridcolor="#D0D8F0", tickfont=dict(color="#5A6480")),   # CHANGED: was #1e2d42 / #8899aa
-    legend=dict(bgcolor="rgba(255,255,255,0.8)", font=dict(color="#1E2235")),  # CHANGED: was dark bg
-    hoverlabel=dict(bgcolor="#EEF0FB", font_color="#1E2235"),          # CHANGED: was #0d1625 / #e8f0fe
+    paper_bgcolor="rgba(6,148,148, 0.0)",
+    plot_bgcolor="rgba(6,148,148, 0.0)",
+    font=dict(color="#1E2235", size=12),
+    xaxis=dict(gridcolor="#D0D8F0", tickfont=dict(color="#5A6480")),
+    yaxis=dict(gridcolor="#D0D8F0", tickfont=dict(color="#5A6480")),
+    legend=dict(bgcolor="rgba(255,255,255,0.8)", font=dict(color="#1E2235")),
+    hoverlabel=dict(bgcolor="#EEF0FB", font_color="#1E2235"),
     margin=dict(l=10, r=10, t=36, b=10),
 )
 
@@ -23,15 +21,13 @@ def apply_sidebar():
         if key not in st.session_state:
             st.session_state[key] = val
 
-    # Load ribbon image for home page background
     try:
-        img_b64 = get_base64_img(r"E:\BDA\YEAR 2\SEM 02\DSPLC\CW2\pics\Suicide-prevention-ribbon-PO.png")
+        img_b64 = get_base64_img(r"E:\BDA\YEAR 2\SEM 02\DSPLC\pics\Suicide-prevention-ribbon-PO.png")
         st.session_state['ribbon_img'] = img_b64
     except:
         st.session_state['ribbon_img'] = None
 
-    st.markdown(
-        """<style>         
+    st.markdown("""<style>         
     [data-testid="stSidebarCollapseButton"],[data-testid="stSidebarHeader"]
                 {display:none!important}
     [data-testid="stSidebar"]
@@ -39,8 +35,8 @@ def apply_sidebar():
                 min-width:100px!important;
                 max-width:120px!important}
     [data-testid="stSidebar"]>div:first-child
-                {background:#2E1F5E!important;
-                border-right:2px solid #2EC4B6!important;
+                {background:#663399 !important;
+                border-right:4px solid #008080!important;
                 display:flex!important;
                 flex-direction:column!important;
                 align-items:center!important;
@@ -54,10 +50,10 @@ def apply_sidebar():
                 {width:100px!important;
                 height:56px!important;
                 border-radius:12px!important;
-                background:D9F5F2!important;
+                background:#2EC4B6!important;
                 border:none!important;
-                font-size:22px!important;
-                color:#EEF0FB!important}
+                font-size:23px!important;
+                color:#2EC4B6!important}
     [data-testid="stSidebar"] button:focus
                 {background:#2D3D4D!important}
     [data-testid="stSidebar"] [data-testid="stSelectbox"]
@@ -68,7 +64,7 @@ def apply_sidebar():
                 border:1px solid #D0D8F0!important;
                 border-radius:8px!important}
     [data-testid="stMetric"]
-                {background:#000000!important;
+                {background:rgba(214, 70, 214, 0.25)!important;
                 border:1px solid #D0D8F0!important;
                 border-radius:12px!important;
                 padding:16px 20px!important}
@@ -83,8 +79,8 @@ def apply_sidebar():
                 font-size:6px!important;
                 font-weight:700!important}
     [data-testid="stPlotlyChart"]
-                {background:rgba(6,148,148, 0.20)!important;
-                border:4px solid #D0D8F0!important;
+                {background:rgba(168, 215, 215, 0.30)!important;
+                border:1px solid #008080!important;
                 border-radius:12px!important;
                 padding:8px!important}
     [data-testid="stSelectbox"]>div
@@ -98,12 +94,12 @@ def apply_sidebar():
                 border-radius:8px!important;
                 color:#1E2235!important}
     [data-testid="stButton"] button
-                {background:#131929!important;
+                {background:#83C3C4!important;
                 border:1px solid #D0D8F0!important;
                 border-radius:8px!important;
-                color:#5A6480!important}
+                color:#000000!important}
     .stApp
-                {background:#F7F9FC}
+                {background:rgba(209, 235, 235,0.50)}
     .block-container
                 {padding:30px 28px 40px!important;
                 max-width:100%!important}
@@ -126,11 +122,9 @@ def apply_sidebar():
                 st.session_state.page = page_name
                 st.rerun()
 
-        # CHANGED: was #3ce1ff44 → purple tint divider
-        st.markdown('<hr style="width:100px;border-color:#7C6CF244;margin:12px 0">', unsafe_allow_html=True)
+        st.markdown('<hr style="width:100px;border-color:#2EC4B6;margin:12px 0">', unsafe_allow_html=True)
 
         for label, key, opts in [("YEAR", "year", list(range(2000, 2022))), ("SEX", "sex", ["Total", "Male", "Female"])]:
-            # CHANGED: label colour was #3ce1ff → bright teal #2EC4B6
             st.markdown(f'<p style="color:#2EC4B6;font-size:14px;font-weight:700;text-align:center;letter-spacing:1.5px;text-transform:uppercase;margin:12px 0 -12px 0">{label}</p>', unsafe_allow_html=True)
             st.session_state[key] = st.selectbox(
                 label, opts,
