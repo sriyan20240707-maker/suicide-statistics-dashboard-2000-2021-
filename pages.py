@@ -106,9 +106,9 @@ def show_trends(df, df_total, df_gender):
 
     # CHANGED: all card backgrounds were #131929 → rgba(6,148,148, 0.15); borders were #1e2d42 → #D0D8F0
     c1.markdown(f'''
-        <div style="background:rgba(6,148,148, 0.15);border:1px solid #D0D8F0;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(91,63,214,0.20)">
+        <div style="background:rgba(150, 111, 214, 0.25);border:1px solid #966FD6;border-radius:12px;padding:16px 20px">
             <div style="color:#5A6480;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
-                📊 Global Trend
+                Global Trend
             </div>
             <div style="color:{tc};font-size:22px;font-weight:700">
                 {"Worsening ↑" if trend_pct > 0 else "Improving ↓"}
@@ -119,9 +119,9 @@ def show_trends(df, df_total, df_gender):
         </div>''', unsafe_allow_html=True)
 
     c2.markdown(f'''
-        <div style="background:rgba(6,148,148, 0.15);border:1px solid #D0D8F0;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(91,63,214,0.20)">
+        <div style="background:rgba(150, 111, 214, 0.25);border:1px solid #966FD6;border-radius:12px;padding:16px 20px">
             <div style="color:#5A6480;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
-                📈 Most Improved Country
+                Most Improved Country
             </div>
             <div style="color:#00B89C;font-size:20px;font-weight:700">
                 {change.idxmin()}
@@ -132,9 +132,9 @@ def show_trends(df, df_total, df_gender):
         </div>''', unsafe_allow_html=True)
 
     c3.markdown(f'''
-        <div style="background:rgba(6,148,148, 0.15);border:1px solid #D0D8F0;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(91,63,214,0.20)">
+        <div style="background:rgba(150, 111, 214, 0.25);border:1px solid #966FD6;border-radius:12px;padding:16px 20px">
             <div style="color:#5A6480;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
-                🏆 Best Performing Year
+                 Best Performing Year
             </div>
             <div style="color:#00B89C;font-size:22px;font-weight:700">
                 {best_year}
@@ -145,9 +145,9 @@ def show_trends(df, df_total, df_gender):
         </div>''', unsafe_allow_html=True)
 
     c4.markdown(f'''
-        <div style="background:rgba(6,148,148, 0.15);border:1px solid #D0D8F0;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(91,63,214,0.20)">
+        <div style="background:rgba(150, 111, 214, 0.25);border:1px solid #966FD6;border-radius:12px;padding:16px 20px">
             <div style="color:#5A6480;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
-                🌟 Best Performing Country
+            Best Performing Country
             </div>
             <div style="color:#1AADA4;font-size:22px;font-weight:700">
                 {best_country}
@@ -162,7 +162,7 @@ def show_trends(df, df_total, df_gender):
     show_line_chart(df)
 
 
-def show_country_analysis(df, df_total, df_gender):
+def show_country_analysis(df, df_gender):
     _section("Nations at a Glance")
     c1, c2 = st.columns([1.4, 1])
     with c1:
@@ -171,4 +171,4 @@ def show_country_analysis(df, df_total, df_gender):
         _section("Regional Risk")
         show_pie_chart_2(df)
         _section("Gender Split")
-        show_pie_chart(df_gender)
+        show_pie_chart(df_gender,df)
