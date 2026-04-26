@@ -51,9 +51,9 @@ def apply_sidebar():
                 height:56px!important;
                 border-radius:12px!important;
                 background:#2EC4B6!important;
-                border:none!important;
+                border:1px solid #D0D8F0!important;
                 font-size:23px!important;
-                color:#2EC4B6!important}
+                color:#ffffff!important}
     [data-testid="stSidebar"] button:focus
                 {background:#2D3D4D!important}
     [data-testid="stSidebar"] [data-testid="stSelectbox"]
@@ -93,11 +93,11 @@ def apply_sidebar():
                 border:1px solid #D0D8F0!important;
                 border-radius:8px!important;
                 color:#1E2235!important}
-    [data-testid="stButton"] button
+    .block-container [data-testid="stButton"] button
                 {background:#83C3C4!important;
-                border:1px solid #D0D8F0!important;
+                border:1px solid #008080!important;
                 border-radius:8px!important;
-                color:#000000!important}
+                color:#000000!important}          
     .stApp
                 {background:rgba(209, 235, 235,0.50)}
     .block-container

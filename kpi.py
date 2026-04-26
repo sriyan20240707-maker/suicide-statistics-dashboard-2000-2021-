@@ -42,8 +42,8 @@ def show_kpis(df, df_total, df_gender):
         ("#5A6480",    "Global Avg Rate",      f"{global_avg:.2f}",   "per 100k"),
         ("#e0ae27",    "Highest Risk Country", top_country,           f"{top_val:.2f}"),
         ("#5A6480",    "Gender Gap",           f"{gender_gap:.2f}",   "Male − Female"),
-        ("#2bba7a",    "Most Improved",         improved,              f"{improved_val:.2f}"),
-        (trend_color,  "Global Trend",          trend_label,           f"{trend_pct:+.1f}% vs prev yr"),
+        ("#2bba7a",    "Most Improved (2021)",         improved,              f"{improved_val:.2f}"),
+        (trend_color,  "Global Trend (2021)",          trend_label,           f"{trend_pct:+.1f}% vs prev 20F20"),
     ]
 
     cols = st.columns(5)
@@ -71,7 +71,7 @@ def show_trend_kpis(df_total):
     </div>""", unsafe_allow_html=True)
     c2.markdown(f"""
     <div style="background:rgba(150, 111, 214, 0.25);border:1px solid #966FD6;border-radius:12px;padding:16px 18px">
-      <div style="color:#8899aa;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Best Performing Country</div>
+      <div style="color:#8899aa;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Best Performing Country (2000-2021)</div>
       <div style="color:#3ecf8e;font-size:22px;font-weight:700;line-height:1.2">{best_country}</div>
       <div style="color:#5a7a9a;font-size:11px;margin-top:4px">avg rate {best_country_val:.2f} per 100k</div>
     </div>""", unsafe_allow_html=True)

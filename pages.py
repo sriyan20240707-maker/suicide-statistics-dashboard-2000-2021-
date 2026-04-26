@@ -110,11 +110,11 @@ def show_trends(df, df_total, df_gender):
             <div style="color:#5A6480;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">
                 Global Trend
             </div>
-            <div style="color:{tc};font-size:22px;font-weight:700">
+            <div style="color:#5A6480;font-size:22px;font-weight:700">
                 {"Worsening ↑" if trend_pct > 0 else "Improving ↓"}
             </div>
-            <div style="color:{tc};font-size:13px;margin-top:4px">
-                {trend_pct:+.1f}% vs previous year
+            <div style="color:#5a7a9a;font-size:13px;margin-top:4px">
+                {trend_pct:+.1f}% vs  2020
             </div>
         </div>''', unsafe_allow_html=True)
 
@@ -126,7 +126,7 @@ def show_trends(df, df_total, df_gender):
             <div style="color:#00B89C;font-size:20px;font-weight:700">
                 {change.idxmin()}
             </div>
-            <div style="color:#00B89C;font-size:13px;margin-top:4px">
+            <div style="color:#5a7a9a;font-size:13px;margin-top:4px">
                 {change.min():.2f} change
             </div>
         </div>''', unsafe_allow_html=True)
