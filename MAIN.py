@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.graph_objects as go
 from styles import apply_sidebar
 from pages import show_home, show_global_overview, show_trends, show_country_analysis
 
