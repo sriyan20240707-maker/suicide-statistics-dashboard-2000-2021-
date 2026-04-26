@@ -6,7 +6,7 @@ from pages import show_home, show_global_overview, show_trends, show_country_ana
 
 st.set_page_config(page_title="Global Suicide Statistics", layout="wide")
 
-df = pd.read_csv(r"C:\Users\User\Downloads\Final_WB_WDI_SH_STA_SUIC_.csv")
+df = pd.read_csv("Final_WB_WDI_SH_STA_SUIC_.csv")
 df = df[['REF_AREA','REF_AREA_LABEL','SEX_LABEL','TIME_PERIOD','OBS_VALUE']].dropna()
 df['OBS_VALUE']   = pd.to_numeric(df['OBS_VALUE'],   errors='coerce')
 df['TIME_PERIOD'] = pd.to_numeric(df['TIME_PERIOD'], errors='coerce')
