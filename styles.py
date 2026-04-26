@@ -22,7 +22,7 @@ def apply_sidebar():
             st.session_state[key] = val
 
     try:
-        img_b64 = get_base64_img(r"E:\BDA\YEAR 2\SEM 02\DSPLC\pics\Suicide-prevention-ribbon-PO.png")
+        img_b64 = get_base64_img("pics/Suicide-prevention-ribbon-PO.png")
         st.session_state['ribbon_img'] = img_b64
     except:
         st.session_state['ribbon_img'] = None
@@ -99,7 +99,7 @@ def apply_sidebar():
                 border-radius:8px!important;
                 color:#000000!important}          
     .stApp
-                {background:rgba(209, 235, 235,0.50)}
+                {background:#ffffff}
     .block-container
                 {padding:30px 28px 40px!important;
                 max-width:100%!important}

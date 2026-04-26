@@ -162,13 +162,13 @@ def show_trends(df, df_total, df_gender):
     show_line_chart(df)
 
 
-def show_country_analysis(df, df_gender):
+def show_country_analysis(df, df_gender, df_full):
     _section("Nations at a Glance")
     c1, c2 = st.columns([1.4, 1])
     with c1:
         show_bar_chart(df)
     with c2:
         _section("Regional Risk")
-        show_pie_chart_2(df)
+        show_pie_chart_2(df_full)   # ← uses full df so regions appear
         _section("Gender Split")
-        show_pie_chart(df_gender,df)
+        show_pie_chart(df_gender, df)
