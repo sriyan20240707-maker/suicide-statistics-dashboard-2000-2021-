@@ -25,4 +25,3 @@ def show_line_chart(df):
         st.subheader("Trend by Country")
         country = st.selectbox("Country", sorted(df['REF_AREA_LABEL'].dropna().unique()), key="line_country")
         st.plotly_chart(_build(df[df['REF_AREA_LABEL'] == country], sex), use_container_width=True)
-        st.write(df[df['REF_AREA_LABEL'] == 'World'][['TIME_PERIOD', 'SEX_LABEL', 'OBS_VALUE']])

@@ -30,23 +30,23 @@ def apply_sidebar():
     st.markdown("""<style>         
     [data-testid="stSidebarCollapseButton"],[data-testid="stSidebarHeader"]
                 {display:none!important}
-    [data-testid="stSidebar"]
-                {width:120px!important;
+    [data-testid="stSidebar"]                                            /* ── Sidebar width ── */
+                {width:135px!important;
                 min-width:100px!important;
-                max-width:120px!important}
-    [data-testid="stSidebar"]>div:first-child
+                max-width:140px!important}
+    [data-testid="stSidebar"]>div:first-child                           /* ── Sidebar style ── */
                 {background:#663399 !important;
                 border-right:4px solid #008080!important;
                 display:flex!important;
                 flex-direction:column!important;
                 align-items:center!important;
                 padding:20px 0!important}
-    [data-testid="stSidebar"] [data-testid="stVerticalBlock"]
+    [data-testid="stSidebar"] [data-testid="stVerticalBlock"]           /* ── Sidebar icon space ── */
                 {display:flex!important;
                 flex-direction:column!important;
                 align-items:center!important;
                 gap:40px!important}
-    [data-testid="stSidebar"] button
+    [data-testid="stSidebar"] button                                    /* ── Sidebar icon style ── */
                 {width:100px!important;
                 height:56px!important;
                 border-radius:12px!important;
@@ -54,56 +54,56 @@ def apply_sidebar():
                 border:1px solid #D0D8F0!important;
                 font-size:23px!important;
                 color:#ffffff!important}
-    [data-testid="stSidebar"] button:focus
+    [data-testid="stSidebar"] button:focus                              /* ── Sidebar icon focus ── */ 
                 {background:#2D3D4D!important}
-    [data-testid="stSidebar"] [data-testid="stSelectbox"]
+    [data-testid="stSidebar"] [data-testid="stSelectbox"]               /* ── Sidebar dropdown width ── */
                 {width:100px!important}
-    [data-testid="stSidebar"] [data-testid="stSelectbox"]>div
+    [data-testid="stSidebar"] [data-testid="stSelectbox"]>div           /* ── Sidebar dropdown style ── */
                 {font-size:12px!important;
                 background:#EEF0FB!important;
                 border:1px solid #D0D8F0!important;
                 border-radius:8px!important}
-    [data-testid="stMetric"]
+    [data-testid="stMetric"]                                            /* ── KPI style ── */
                 {background:rgba(214, 70, 214, 0.25)!important;
                 border:1px solid #D0D8F0!important;
                 border-radius:12px!important;
                 padding:16px 20px!important}
-    [data-testid="stMetricLabel"]
+    [data-testid="stMetricLabel"]                                       /* ── KPI txt ── */
                 {color:#5A6480!important;
                 font-size:11px!important;
                 font-weight:600!important;
                 letter-spacing:.8px!important;
                 text-transform:uppercase!important}
-    [data-testid="stMetricValue"]
+    [data-testid="stMetricValue"]                                       /* ── KPI num ── */
                 {color:rgba(6,148,148, 0.20)!important;
                 font-size:6px!important;
                 font-weight:700!important}
-    [data-testid="stPlotlyChart"]
+    [data-testid="stPlotlyChart"]                                       /* ── chart box style ── */
                 {background:rgba(168, 215, 215, 0.30)!important;
                 border:1px solid #008080!important;
                 border-radius:12px!important;
                 padding:8px!important}
-    [data-testid="stSelectbox"]>div
+    [data-testid="stSelectbox"]>div                                     /* ── other dropdown style ── */
                 {background:#FFFFFF!important;
                 border:1px solid #D0D8F0!important;
                 border-radius:8px!important;
                 color:#1E2235!important}
-    [data-testid="stTextInput"] input
+    [data-testid="stTextInput"] input                                   /* ── country searchbar ── */
                 {background:#FFFFFF!important;
                 border:1px solid #D0D8F0!important;
                 border-radius:8px!important;
                 color:#1E2235!important}
-    .block-container [data-testid="stButton"] button
+    .block-container [data-testid="stButton"] button                    /* ── prev/next buttons ── */
                 {background:#83C3C4!important;
                 border:1px solid #008080!important;
                 border-radius:8px!important;
                 color:#000000!important}          
-    .stApp
+    .stApp                                                              /* ── Main app background ── */
                 {background:rgba(209, 235, 235,0.50)}
-    .block-container
+    .block-container                                                    /* ── app area ── */
                 {padding:30px 28px 40px!important;
                 max-width:100%!important}
-    .stApp h2,.stApp h3
+    .stApp h2,.stApp h3                                                 /* ── sub headings ── */
                 {color:#1E2235!important;
                 font-weight:600!important;
                 font-size:15px!important}

@@ -11,7 +11,7 @@ df = df[['REF_AREA','REF_AREA_LABEL','SEX_LABEL','TIME_PERIOD','OBS_VALUE']].dro
 df['OBS_VALUE']   = pd.to_numeric(df['OBS_VALUE'],   errors='coerce')
 df['TIME_PERIOD'] = pd.to_numeric(df['TIME_PERIOD'], errors='coerce')
 
-# ── All non-country labels to exclude from country-level charts ──
+# non-country labels to exclude from country charts
 REGIONS = [
     'East Asia & Pacific','Europe & Central Asia','Latin America & Caribbean',
     'Middle East, North Africa, Afghanistan & Pakistan','North America',
@@ -42,8 +42,7 @@ NON_COUNTRIES = [
 
 EXCLUDE = REGIONS + NON_COUNTRIES
 
-# df = full dataset (used only for regional chart)
-# df_countries = countries only (used everywhere else)
+
 df_countries = df[~df['REF_AREA_LABEL'].isin(EXCLUDE)].reset_index(drop=True)
 
 df_total   = df_countries[df_countries['SEX_LABEL'] == 'Total']

@@ -6,7 +6,7 @@ from pie_chart1 import show_pie_chart
 from Pie_chart2 import show_pie_chart_2
 from kpi import show_kpis
 
-
+#home page
 def show_home():
     if st.session_state.get("ribbon_img"):
         st.markdown(f"""
@@ -36,7 +36,7 @@ def show_home():
                 text-align:center;
                 gap:16px">
       <h1 style="color:#5B3FD6;font-size:80px;font-weight:700;line-height:1.1;margin:0;letter-spacing:3px;text-transform:uppercase">Global Suicide<br>Statistics Dashboard</h1>
-      <p style="color:#1E2235;font-size:25px;max-width:520px;line-height:1.6;margin:0">Analysing mortality data across 233 countries from 2000 to 2021.</p>
+      <p style="color:#1E2235;font-size:25px;max-width:520px;line-height:1.6;margin:0">Analysing mortality data across 185 countries from 2000 to 2021.</p>
       <div style="margin-top:16px;padding:18px 28px;background:rgba(238,240,251,0.85);border:1px solid #D0D8F0;border-radius:50px;max-width:600px;color:#1E2235;font-size:20px;font-style:italic;line-height:1.6">
         "Even the darkest night will end and the sun will rise."<br>
         <span style="color:#5A6480;font-size:18px">— Victor Hugo</span>
@@ -57,20 +57,18 @@ def _card(col, label, value, sub, color):
             <div style="color:#8899AA;font-size:13px;margin-top:4px">{sub}</div>
         </div>''', unsafe_allow_html=True)
 
-
+# world veiew
 def show_global_overview(df, df_total, df_gender):
     _section("Key Performance Indicators")
     show_kpis(df, df_total, df_gender)
     _section("Global Suicide Rate Map")
     show_map(df)
 
-
+# trends
 def show_trends(df, df_total, df_gender):
-
+# disclamer
     st.info("Trend charts are controlled by their own local filters.")
-
-    # Read the sex filter — default to 'Total' on first load (before the widget exists).
-    # "All" is treated the same as "Total" for KPI purposes (World Total = global aggregate).
+#KPI calculations
     raw_sex = st.session_state.get("line_sex", "Total")
     kpi_sex = "Total" if raw_sex == "All" else raw_sex
 
@@ -78,7 +76,6 @@ def show_trends(df, df_total, df_gender):
     prev   = sorted(df['TIME_PERIOD'].unique())[-2]
     first  = df['TIME_PERIOD'].min()
 
-    # -- World row filtered by kpi_sex --
     world     = df[df['REF_AREA_LABEL'] == 'World']
     world_sex = world[world['SEX_LABEL'] == kpi_sex]
 
@@ -87,12 +84,12 @@ def show_trends(df, df_total, df_gender):
     trend_pct    = ((world_latest.values[0] - world_prev.values[0]) / world_prev.values[0] * 100) \
                    if not world_latest.empty and not world_prev.empty else 0
 
-    # Best Performing Year: World row, filtered sex
+    # Best Performing Year
     world_by_year = world_sex.set_index('TIME_PERIOD')['OBS_VALUE']
     best_year     = world_by_year.idxmin()
     best_year_val = world_by_year.min()
 
-    # -- Country-level data filtered by kpi_sex --
+    # Country-level data 
     if kpi_sex == "Total":
         df_sex = df_total
     else:
@@ -105,7 +102,7 @@ def show_trends(df, df_total, df_gender):
     best_country_val = df_sex.groupby('REF_AREA_LABEL')['OBS_VALUE'].mean().min()
 
     tc = "#E05D7B" if trend_pct > 0 else "#00B89C"
-
+#kpi
     _section(f"Key Performance Indicators — {kpi_sex}")
     c1, c2, c3, c4 = st.columns(4)
     _card(c1, "Global Trend",            "Worsening" if trend_pct > 0 else "Improving", f"{trend_pct:+.1f}% vs {int(prev)}", tc)
@@ -116,7 +113,7 @@ def show_trends(df, df_total, df_gender):
     _section("Time Series")
     show_line_chart(df)
 
-
+# Deep dive
 def show_country_analysis(df, df_gender, df_full):
     _section("Nations at a Glance")
     c1, c2 = st.columns([1.4, 1])

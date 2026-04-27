@@ -7,22 +7,22 @@ def show_kpis(df, df_total, df_gender):
     year   = st.session_state.year
     sex    = st.session_state.sex
 
-    # Global Avg Rate — use World row directly
+    # Global Avg Rate 
     world = df[(df['REF_AREA_LABEL'] == 'World') & (df['TIME_PERIOD'] == year) & (df['SEX_LABEL'] == sex)]
     global_avg = world['OBS_VALUE'].values[0] if not world.empty else 0
 
-    # Highest Risk Country — use actual country values
+    # Highest Risk Country 
     ys_data     = df_total[df_total['TIME_PERIOD'] == year]
     ys_grp      = ys_data.groupby('REF_AREA_LABEL')['OBS_VALUE'].first()
     top_country = ys_grp.idxmax()
     top_val     = ys_grp.max()
 
-    # Gender Gap — reacts to year only
+    # Gender Gap 
     y_gender   = df_gender[df_gender['TIME_PERIOD'] == year]
     gender_gap = (y_gender[y_gender['SEX_LABEL'] == 'Male']['OBS_VALUE'].mean() -
                   y_gender[y_gender['SEX_LABEL'] == 'Female']['OBS_VALUE'].mean())
 
-    # Most Improved — reacts to sex only
+    # Most Improved 
     sex_data    = df[df['SEX_LABEL'] == sex] if sex != 'Total' else df_total
     latest_grp  = sex_data[sex_data['TIME_PERIOD'] == latest].groupby('REF_AREA_LABEL')['OBS_VALUE'].first()
     first_grp   = sex_data[sex_data['TIME_PERIOD'] == first].groupby('REF_AREA_LABEL')['OBS_VALUE'].first()
@@ -30,7 +30,7 @@ def show_kpis(df, df_total, df_gender):
     improved    = change.idxmin() if not change.empty else "N/A"
     improved_val = change.min() if not change.empty else 0
 
-    # Global Trend — use World row
+    # Global Trend 
     world_latest = df[(df['REF_AREA_LABEL'] == 'World') & (df['TIME_PERIOD'] == latest) & (df['SEX_LABEL'] == sex)]['OBS_VALUE']
     world_prev   = df[(df['REF_AREA_LABEL'] == 'World') & (df['TIME_PERIOD'] == prev)   & (df['SEX_LABEL'] == sex)]['OBS_VALUE']
     trend_pct    = ((world_latest.values[0] - world_prev.values[0]) / world_prev.values[0] * 100) if not world_latest.empty and not world_prev.empty else 0

@@ -28,7 +28,6 @@ def show_pie_chart(df_gender, df):
     }
     fig.update_layout(**layout_override)
 
-    # ── Side stats ──
     chart_col, stats_col = st.columns([2, 1])
 
     with chart_col:
@@ -53,7 +52,6 @@ def show_pie_chart(df_gender, df):
             (df['REF_AREA_LABEL'] == country if country != "All" else True)
         ]['OBS_VALUE'].mean()
 
-        # Global ranking using Total only
         all_countries = df[
             (df['SEX_LABEL'] == 'Total') &
             (df['TIME_PERIOD'] == st.session_state.year)
@@ -61,6 +59,7 @@ def show_pie_chart(df_gender, df):
 
         rank = list(all_countries.index).index(country) + 1 if country != "All" and country in all_countries.index else "N/A"
 
+# Side stats
         st.markdown(f"""
         <div style='
             font-size:15px;
