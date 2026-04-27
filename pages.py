@@ -3,7 +3,7 @@ from map_chart import show_map
 from line_chart1 import show_line_chart
 from bar_chart1 import show_bar_chart
 from pie_chart1 import show_pie_chart
-from Pie_chart2 import show_pie_chart_2
+from H_bar_chart1 import show_pie_chart_2
 from kpi import show_kpis
 
 #home page
