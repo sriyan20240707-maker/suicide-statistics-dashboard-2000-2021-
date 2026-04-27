@@ -39,6 +39,7 @@ NON_COUNTRIES = [
     'Sub-Saharan Africa (excluding high income)',
 ]
 
+
 EXCLUDE = REGIONS + NON_COUNTRIES
 
 # df = full dataset (used only for regional chart)
@@ -50,6 +51,6 @@ df_gender  = df_countries[df_countries['SEX_LABEL'].isin(['Male','Female'])]
 
 page = apply_sidebar()
 if   page == "🏠 Home":             show_home()
-elif page == "🌍 Global Overview":  show_global_overview(df_countries, df_total, df_gender)
-elif page == "📈 Trends":           show_trends(df_countries, df_total, df_gender)
+elif page == "🌍 Global Overview":  show_global_overview(df, df_total, df_gender)
+elif page == "📈 Trends":           show_trends(df, df_total, df_gender)
 elif page == "📊 Country Analysis": show_country_analysis(df_countries, df_gender, df)

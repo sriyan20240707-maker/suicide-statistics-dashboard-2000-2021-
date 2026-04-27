@@ -99,7 +99,7 @@ def apply_sidebar():
                 border-radius:8px!important;
                 color:#000000!important}          
     .stApp
-                {background:#ffffff}
+                {background:rgba(209, 235, 235,0.50)}
     .block-container
                 {padding:30px 28px 40px!important;
                 max-width:100%!important}
